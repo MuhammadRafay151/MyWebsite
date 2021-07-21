@@ -38,6 +38,14 @@ const navbar = () => (`
                         <a class="nav-link" href="/fyp/project-summarized-architecture.html">
                         Summarized Architecture</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/fyp/project-artifacts.html">
+                        Artifacts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/fyp/project-references.html">
+                        References</a>
+                    </li>
                 </ul>
             </div>
         </div>
