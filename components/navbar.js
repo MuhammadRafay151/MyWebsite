@@ -42,6 +42,10 @@ document.write(`
                         Architecture</a>
                     <a class="dropdown-item" target="_blank" href="/fyp/project-summarized-architecture.html">
                     Summarized Architecture</a>
+                    <a class="dropdown-item" target="_blank" href="/fyp/project-artifacts.html">
+                    Artifacts</a>
+                    <a class="dropdown-item" target="_blank" href="/fyp/project-references.html">
+                    References</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
