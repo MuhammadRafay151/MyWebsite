@@ -1,5 +1,5 @@
 const navbar = () => (`
-    <nav class="navbar navbar-color-on-scroll  fixed-top navbar-expand-lg" color-on-scroll="100">
+    <nav class="navbar fixed-top navbar-expand-lg" color-on-scroll="100">
         <div class="container-fluid">
             <div class="navbar-translate">
 
