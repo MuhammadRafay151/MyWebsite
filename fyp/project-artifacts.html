@@ -19,30 +19,92 @@
 
 <body class="bg-white">
     <nav></nav>
-    <div class="container" style="margin-top:8%;">
+    <div class="container" style="margin-top:120px;">
         <div class="row justify-content-center">
-            <h1>Coming Soon</h1>
-            <!-- <ol>
-                <li>
-                    <a href="http://hlf-automater.herokuapp.com/" target="_blank">HLF-Automater</a>
-                </li>
-                <li>
-                    <a href="" target="_blank">Final Report</a>
-                </li>
-                <li>
-                    <a href="" target="_blank">Final Report</a>
-                </li>
-            </ol> -->
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Artifact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </div>
 
     </div>
     <script type="text/javascript" src="../components/navbar-fyp.js"></script>
+    <script src="/assets/js/core/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/js/core/popper.min.js" type="text/javascript"></script>
+    <script src="/assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+    <script src="/assets/js/plugins/moment.min.js"></script>
+    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+    <script src="/assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="/assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+    <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+    <script src="/assets/js/material-kit.js?v=2.0.7" type="text/javascript"></script>
     <script>
         window.addEventListener('load', function () {
             const nav = document.createElement('nav');
             nav.innerHTML = navbar()
             document.querySelector('nav').replaceWith(nav)
         })
+        const artifacts = [
+            {
+                name: "Project Defending", artifactName: "Initial Proposal", src: "/fyp/artifacts/Initial Proposal.pdf"
+            },
+            {
+                name: "Project Defending", artifactName: "Presentation", src: "/fyp/artifacts/Proposal Presentation.pptx"
+            },
+            {
+                name: "Milestone 0", artifactName: "Detailed Proposal", src: "/fyp/artifacts/Detailed Proposal.pdf"
+            },
+            {
+                name: "Milestone 0", artifactName: "Prototypes", src: "/fyp/artifacts/FYP PROTOTYPES.zip", notes: ["These prototypes design earlier in the project life cycle just for POC. so, it's not smiliar to actual application"]
+            },
+            {
+                name: "Milestone 0", artifactName: "Video Presentation", src: "https://drive.google.com/file/d/1Jww9XtzT6YisGzH54vaICA2kgfwvtDhj/view"
+            },
+            {
+                name: "Milestone 1", artifactName: "Coming soon", src: "#"
+            },
+            {
+                name: "Milestone 2", artifactName: "Presentation", src: "/fyp/artifacts/Milestone 2 Presentation.pptx"
+            },
+            {
+                name: "Milestone 2", artifactName: "White Box Testing", src: "/fyp/artifacts/White Box Testing.pdf"
+            },
+            {
+                name: "Milestone 2", artifactName: "Black Box Testing", src: "/fyp/artifacts/Black Box Testing.pdf"
+            },
+            {
+                name: "Milestone 3", artifactName: "Final FYP Report", src: "/fyp/artifacts/FYP Report.pdf"
+            },
+            {
+                name: "NA", artifactName: "HLF-Automater", src: "http://hlf-automater.herokuapp.com/"
+            },
+        ]
+        let tbody = document.querySelector('tbody');
+        artifacts.forEach(artifact => {
+            let row = document.createElement('tr');
+            row.innerHTML = `
+            <td>${artifact.name}</td>
+            <td>
+                <a href="${artifact.src}" target="_blank">${artifact.artifactName}</a>
+                ${getNotes(artifact.notes)}
+            </td>
+            `
+            tbody.append(row)
+        })
+        function getNotes(notes) {
+            if (!notes || notes.length === 0)
+                return ''
+            return `<ul>${notes ? notes.map(note => (`<li>
+                    <p>${note}</p>
+                    </li>`)).join('') : ''}</ul>`
+        }
     </script>
 </body>
 
