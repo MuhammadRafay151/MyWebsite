@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Muhammad Rafay</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!--  Fonts and icons  -->
+    <!-- Fonts and icons -->
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+    <!-- Material Kit CSS -->
+    <link href="../assets/css/material-kit.css?v=2.0.7" rel="stylesheet" />
+    <style>
+        td {
+            vertical-align: middle !important;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+    <nav></nav>
+    <div class="container" style="margin-top:120px;">
+        <div class="row justify-content-center">
+            <div class="col">
+                <div id="t1">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../components/navbar-fyp.js"></script>
+    <script src="/assets/js/core/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/js/core/popper.min.js" type="text/javascript"></script>
+    <script src="/assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+    <script src="/assets/js/plugins/moment.min.js"></script>
+    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+    <script src="/assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="/assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+    <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+    <script src="/assets/js/material-kit.js?v=2.0.7" type="text/javascript"></script>
+    <script>
+        window.addEventListener('load', function () {
+            const nav = document.createElement('nav');
+            nav.innerHTML = navbar()
+            document.querySelector('nav').replaceWith(nav)
+            renderTables();
+        })
+        const features = {
+            "Manage Organization": [
+                {
+                    name: "Register Organization", roles: ["SuperAdmin"]
+                },
+                {
+                    name: "Modify Organization Details", roles: ["SuperAdmin"]
+                },
+                {
+                    name: "View Organization Details", roles: ["SuperAdmin", "Admin"]
+                },
+                {
+                    name: "Enable/Disable Organization", roles: ["SuperAdmin"]
+                },
+                {
+                    name: "Register Organization's Users", roles: ["SuperAdmin"]
+                },
+                {
+                    name: "Enable/Disable Organization's Users", roles: ["SuperAdmin"]
+                },
+                {
+                    name: "Genreate password reset links for Organization's Users", roles: ["SuperAdmin"]
+                },
+                {
+                    name: "Assign Certificate Count to Organizations", roles: ["SuperAdmin"]
+                },
+                {
+                    name: "Reduce Organization's Certificate Count", roles: ["SuperAdmin"]
+                },
+                {
+                    name: "View Oragnization's Count History", roles: ["SuperAdmin"]
+                },
+                {
+                    name: "View Oragnization's Published Certificates", roles: ["SuperAdmin"]
+                },
+            ],
+            "Manage Certificates": [
+                {
+                    name: "Create Certificates", roles: ["Admin", "Issuer"]
+                },
+                {
+                    name: "View Certificates", roles: ["Admin", "Issuer"]
+                },
+                {
+                    name: "View Published Certificates", roles: ["Admin", "Issuer"], notes: ["In his/her own organization only"]
+                },
+                {
+                    name: "Modify Certificates", roles: ["Admin", "Issuer"]
+                },
+                {
+                    name: "Delete Certificates", roles: ["Admin", "Issuer"]
+                },
+                {
+                    name: "Publish Certificates", roles: ["Admin", "Issuer"]
+                },
+                {
+                    name: "Publish Notification", roles: ["Admin", "Issuer"]
+                },
+                {
+                    name: "Email Published Certificates", roles: ["SuperAdmin", "Admin", "Issuer"]
+                },
+                {
+                    name: "Verify Certificates", roles: ["SuperAdmin", "Admin", "Issuer", "Verifier"]
+                },
+                {
+                    name: "Forget Certificates", roles: ["SuperAdmin", "Admin", "Issuer", "Verifier"]
+                },
+            ],
+            "Manage Users": [
+                {
+                    name: "Register User", roles: ["Admin"], notes: ["In his/her own Oraginzation only."]
+                },
+                {
+                    name: "Modify User Details", roles: ["Admin"], notes: ["In his/her own Oraginzation only."]
+                },
+                {
+                    name: "View User Details", roles: ["Admin"], notes: ["In his/her own Oraginzation only."]
+                },
+                {
+                    name: "View personal profile", roles: ["Admin,SuperAdmin", "Issuer"],
+                },
+                {
+                    name: "Genreate reset Password Link", roles: ["Admin"], notes: ["In his/her own Oraginzation only."]
+                },
+                {
+                    name: "Directly reset Password", roles: ["Admin", "SuperAdmin"],
+                },
+            ],
+        }
+        function renderTables() {
+            let container = document.getElementById('t1');
+            for (const [key, value] of Object.entries(features)) {
+                let div = document.createElement('div');
+                div.innerHTML = `
+            <h3 class="text-center">${key}</h3>
+            <hr>
+            <table class="table table-hover mb-5">
+                <thead>
+                    <tr>
+                        <th class='text-center'>Feature</th>
+                        <th class='text-center'>Verifier</th>
+                        <th class='text-center'>Issuer</th>
+                        <th class='text-center'>Admin</th>
+                        <th class='text-center'>Super Admin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${getFeatureRows(value)}
+                </tbody>
+            </table>
+            `
+                container.append(div)
+            }
+        }
+        function getRolesCol(rolesList, appliedRole) {
+            let isAllowed = rolesList.includes(appliedRole);
+            return `<td ${isAllowed ? "class='bg-success text-center'" : "class='text-center'"}>
+                ${isAllowed ? '&#10004' : "&#10006"}
+            </td > `
+        }
+        function getFeatureRows(features) {
+            if (!features || features.length === 0)
+                return ''
+            return `${features.map(feature => (`<tr><td>${feature.name}${getNotes(feature.notes)}</td>
+            ${getRolesCol(feature.roles, 'Verifier')}
+            ${getRolesCol(feature.roles, 'Issuer')}
+            ${getRolesCol(feature.roles, 'Admin')}
+            ${getRolesCol(feature.roles, 'SuperAdmin')}</tr>`)).join('')}`
+        }
+        function getNotes(notes) {
+            if (!notes || notes.length === 0)
+                return ''
+            return `<ul>${notes ? notes.map(note => (`<li>
+                    <p>${note}</p>
+                    </li>`)).join('') : ''}</ul>`
+        }
+    </script>
+</body>
+
+</html>

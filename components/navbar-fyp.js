@@ -31,6 +31,10 @@ const navbar = () => (`
                             Website</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/fyp/project-features.html">
+                            Features</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/fyp/project-architecture.html">
                            Detail Architecture</a>
                     </li>
