@@ -35,16 +35,17 @@ document.write(`
                     FYP
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" target="_blank" href="/fyp/project-introduction.html">
+                    <a class="dropdown-item"  href="/fyp/project-introduction.html">
                         Introduction</a>
                     <a class="dropdown-item" target="_blank" href="http://mr-devs.ml/">Website</a>
-                    <a class="dropdown-item" target="_blank" href="/fyp/project-architecture.html">Detail
+                    <a class="dropdown-item"  href="/fyp/project-features.html">Features</a>
+                    <a class="dropdown-item"  href="/fyp/project-architecture.html">Detail
                         Architecture</a>
-                    <a class="dropdown-item" target="_blank" href="/fyp/project-summarized-architecture.html">
+                    <a class="dropdown-item"  href="/fyp/project-summarized-architecture.html">
                     Summarized Architecture</a>
-                    <a class="dropdown-item" target="_blank" href="/fyp/project-artifacts.html">
+                    <a class="dropdown-item"  href="/fyp/project-artifacts.html">
                     Artifacts</a>
-                    <a class="dropdown-item" target="_blank" href="/fyp/project-references.html">
+                    <a class="dropdown-item"  href="/fyp/project-references.html">
                     References</a>
                 </div>
             </li>
